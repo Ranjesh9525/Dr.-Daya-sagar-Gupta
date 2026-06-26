@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achievements — Dr. Daya Sagar Gupta</title>
+    <meta name="description" content="Dr. Daya Sagar Gupta — Assistant Professor at IIT Patna specializing in cryptography, cybersecurity, and blockchain technology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="achievements">
+
+    <!-- THREE.JS CANVAS -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⬡</span>
+                    Dr. D.S. Gupta
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <!-- Desktop nav only -->
+                <ul class="nav-links-desktop">
+                    <li class="nav-item dropdown">
+                        <a href="research.html" class="nav-link dropdown-toggle nav-link--research">Research ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publications.html" class="dropdown-link">Publications</a></li>
+                            <li><a href="projects.html" class="dropdown-link">Projects</a></li>
+                            <li><a href="students.html" class="dropdown-link">Students</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
+                    <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link nav-link--achievements">Achievements</a></li>
+                    <li><a href="contact.html" class="nav-link nav-link--contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE NAV MENU — body-level so nothing can clip it -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <nav class="mobile-nav-panel" id="mobileNavPanel">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="research.html" class="mobile-nav-link">
+                        <span class="mnav-icon">🔬</span> Research
+                    </a>
+                    <ul class="mobile-nav-sub">
+                        <li><a href="publications.html" class="mobile-nav-sub-link">📄 Publications</a></li>
+                        <li><a href="projects.html"     class="mobile-nav-sub-link">⚗️ Projects</a></li>
+                        <li><a href="students.html"     class="mobile-nav-sub-link">🎓 Scholars</a></li>
+                    </ul>
+                </li>
+                <li><a href="experience.html"   class="mobile-nav-link"><span class="mnav-icon">💼</span> Experience</a></li>
+                <li><a href="education.html"    class="mobile-nav-link"><span class="mnav-icon">📘</span> Education</a></li>
+                <li><a href="achievements.html" class="mobile-nav-link"><span class="mnav-icon">🏆</span> Achievements</a></li>
+                <li><a href="contact.html"      class="mobile-nav-link"><span class="mnav-icon">✉️</span> Contact</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ" target="_blank" class="mnav-social">Scholar</a>
+                <a href="https://orcid.org/0000-0001-5401-7287" target="_blank" class="mnav-social">ORCID</a>
+                <a href="https://www.linkedin.com/in/dr-daya-sagar-gupta-46bb4397/" target="_blank" class="mnav-social">LinkedIn</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="page-top-offset section achievements-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Recognition & Achievements</h2>
+                <p class="section-subtitle">Awards, honors, and professional recognition</p>
+            </div>
+
+            <!-- Auto-scrolling photo strip — 4 images visible, loops right-to-left -->
+            <div class="ach-strip-outer">
+                <div class="ach-strip-track">
+                    <!-- Original set -->
+                    <div class="ach-strip-slide"><img src="images/a1.jpg" alt="Achievement 1" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a2.jpg" alt="Achievement 2" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a3.jpg" alt="Achievement 3" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a4.JPG" alt="Achievement 4" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a5.JPG" alt="Achievement 5" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <!-- Duplicate set for seamless loop -->
+                    <div class="ach-strip-slide"><img src="images/a1.jpg" alt="Achievement 1" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a2.jpg" alt="Achievement 2" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a3.jpg" alt="Achievement 3" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a4.JPG" alt="Achievement 4" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                    <div class="ach-strip-slide"><img src="images/a5.JPG" alt="Achievement 5" loading="lazy" onerror="this.closest('.ach-strip-slide').style.display='none'"></div>
+                </div>
+            </div>
+
+            <!-- Achievement cards below the strip -->
+            <div class="ach-cards-grid">
+                <div class="ach-card-clean">
+                    <div class="ach-card-icon">🏆</div>
+                    <h4 class="ach-card-title">Best Paper Award</h4>
+                    <p class="ach-card-desc">Excellence in cryptographic research recognized at international symposium</p>
+                </div>
+                <div class="ach-card-clean">
+                    <div class="ach-card-icon">🔬</div>
+                    <h4 class="ach-card-title">Research Grant — RGIPT &amp; IIT Patna</h4>
+                    <p class="ach-card-desc">₹10 Lakh funded project on IoT security protocols as Principal Investigator</p>
+                </div>
+                <div class="ach-card-clean">
+                    <div class="ach-card-icon">🎓</div>
+                    <h4 class="ach-card-title">IIT Academic Excellence</h4>
+                    <p class="ach-card-desc">Doctoral and Master's degrees from IIT (ISM) Dhanbad with distinction</p>
+                </div>
+                <div class="ach-card-clean">
+                    <div class="ach-card-icon">📖</div>
+                    <h4 class="ach-card-title">50+ Publications</h4>
+                    <p class="ach-card-desc">Extensive publication record in top-tier IEEE, ACM, and Springer journals</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

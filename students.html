@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhD Scholars — Dr. Daya Sagar Gupta</title>
+    <meta name="description" content="Dr. Daya Sagar Gupta — Assistant Professor at IIT Patna specializing in cryptography, cybersecurity, and blockchain technology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Filter bar (reuses pub-filter-bar pattern) ── */
+        .phd-filter-bar {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-bottom: 32px;
+            flex-wrap: wrap;
+        }
+        .phd-filter {
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: var(--text-muted);
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .phd-filter:hover  { color: var(--text); border-color: var(--blue); }
+        .phd-filter.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #ffffff;
+        }
+        .phd-filter-count {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.25);
+            color: inherit;
+            min-width: 22px;
+            text-align: center;
+        }
+        .phd-filter:not(.active) .phd-filter-count {
+            background: var(--border);
+            color: var(--text-muted);
+        }
+
+        /* ── College pill inside card ── */
+        .phd-card-college {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.67rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            color: var(--blue);
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 20px;
+            padding: 2px 10px;
+            white-space: nowrap;
+            max-width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Hidden card state */
+        .phd-card.phd-hidden {
+            display: none;
+        }
+
+        /* Smooth appear */
+        .phd-card {
+            transition: transform 0.22s var(--ease-smooth, cubic-bezier(.4,0,.2,1)),
+                        box-shadow 0.22s var(--ease-smooth, cubic-bezier(.4,0,.2,1)),
+                        opacity 0.2s ease;
+        }
+    </style>
+</head>
+<body data-page="students">
+
+    <!-- THREE.JS CANVAS -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⬡</span>
+                    Dr. D.S. Gupta
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <!-- Desktop nav only -->
+                <ul class="nav-links-desktop">
+                    <li class="nav-item dropdown">
+                        <a href="research.html" class="nav-link dropdown-toggle nav-link--research">Research ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publications.html" class="dropdown-link">Publications</a></li>
+                            <li><a href="projects.html" class="dropdown-link">Projects</a></li>
+                            <li><a href="students.html" class="dropdown-link">Students</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
+                    <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link nav-link--achievements">Achievements</a></li>
+                    <li><a href="contact.html" class="nav-link nav-link--contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE NAV MENU — body-level so nothing can clip it -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <nav class="mobile-nav-panel" id="mobileNavPanel">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="research.html" class="mobile-nav-link">
+                        <span class="mnav-icon">🔬</span> Research
+                    </a>
+                    <ul class="mobile-nav-sub">
+                        <li><a href="publications.html" class="mobile-nav-sub-link">📄 Publications</a></li>
+                        <li><a href="projects.html"     class="mobile-nav-sub-link">⚗️ Projects</a></li>
+                        <li><a href="students.html"     class="mobile-nav-sub-link">🎓 Scholars</a></li>
+                    </ul>
+                </li>
+                <li><a href="experience.html"   class="mobile-nav-link"><span class="mnav-icon">💼</span> Experience</a></li>
+                <li><a href="education.html"    class="mobile-nav-link"><span class="mnav-icon">📘</span> Education</a></li>
+                <li><a href="achievements.html" class="mobile-nav-link"><span class="mnav-icon">🏆</span> Achievements</a></li>
+                <li><a href="contact.html"      class="mobile-nav-link"><span class="mnav-icon">✉️</span> Contact</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ" target="_blank" class="mnav-social">Scholar</a>
+                <a href="https://orcid.org/0000-0001-5401-7287" target="_blank" class="mnav-social">ORCID</a>
+                <a href="https://www.linkedin.com/in/dr-daya-sagar-gupta-46bb4397/" target="_blank" class="mnav-social">LinkedIn</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- STUDENTS SECTION -->
+    <section id="students" class="page-top-offset section students-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Mentorship</p>
+                <h2 class="section-title">PhD Scholars</h2>
+                <p class="section-subtitle">Doctoral scholars under active supervision and mentorship at IIT Patna</p>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="phd-filter-bar">
+                <button class="phd-filter active" data-filter="all">
+                    All <span class="phd-filter-count" id="count-all">10</span>
+                </button>
+                <button class="phd-filter" data-filter="pursuing">
+                    Pursuing <span class="phd-filter-count" id="count-pursuing">8</span>
+                </button>
+                <button class="phd-filter" data-filter="awarded">
+                    PhD Awarded <span class="phd-filter-count" id="count-awarded">2</span>
+                </button>
+            </div>
+
+            <!-- PhD Scholar Cards Grid -->
+            <div class="phd-cards-grid" id="phdGrid">
+
+                <!-- Card 1 — Hema Shekhawat -->
+                <div class="phd-card" data-status="awarded">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/hema.jpg" alt="Hema Shekhawat" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>HS</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Hema Shekhawat</h4>
+                        <p class="phd-card-area">Cryptographic protocols for secure communication in distributed systems</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2020</span>
+                            <span class="phd-card-college">🏛️ IIT (ISM) Dhanbad</span>
+                            <span class="phd-card-badge awarded">PhD Awarded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 — Pooja Verma -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/pooja.jpg" alt="Pooja Verma" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>PV</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Pooja Verma</h4>
+                        <p class="phd-card-area">Lattice-based cryptography and post-quantum security protocols</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2021</span>
+                            <span class="phd-card-college">🏛️ RGIPT Amethi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 — Lacchita Soni -->
+                <div class="phd-card" data-status="awarded">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/lacchita.jpg" alt="Lacchita Soni" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>LS</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Lacchita Soni</h4>
+                        <p class="phd-card-area">Blockchain-based secure data management for IoT environments</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2021</span>
+                            <span class="phd-card-college">🏛️ RGIPT Amethi</span>
+                            <span class="phd-card-badge awarded">PhD Awarded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 — Ayush Thakur -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/ayush.jpg" alt="Ayush Thakur" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>AT</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Ayush Thakur</h4>
+                        <p class="phd-card-area">Machine learning-based intrusion detection in cyber-physical systems</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2022</span>
+                            <span class="phd-card-college">🏛️ IIT Mandi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 — Taru Bhatnagar -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/taru.jpg" alt="Taru Bhatnagar" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>TB</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Taru Bhatnagar</h4>
+                        <p class="phd-card-area">Zero-knowledge proofs and their applications in privacy-preserving systems</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2022</span>
+                            <span class="phd-card-college">🏛️ IIT Mandi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 — Dilip Kumar -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/dilip.jpg" alt="Dilip Kumar" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>DK</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Dilip Kumar</h4>
+                        <p class="phd-card-area">Quantum-resistant digital signature schemes for cloud security</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2022</span>
+                            <span class="phd-card-college">🏛️ IIT Mandi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 — Govind Godara -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/govind.jpeg" alt="Govind Godara" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>GG</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Govind Godara</h4>
+                        <p class="phd-card-area">Internet of drones, post quantum cryptography </p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: Jan 2025</span>
+                            <span class="phd-card-college">🏛️ IIT Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 8 — Tanushree Bhowmick -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/tanushree.jpg" alt="Tanushree Bhowmick" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>TB</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Tanushree Bhowmick</h4>
+                        <p class="phd-card-area">Cybersecurity frameworks for smart grid and critical infrastructure protection</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: Jan 2025</span>
+                            <span class="phd-card-college">🏛️ IIT Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 9 — Ranjesh Kumar Roy -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/ranjesh.jpeg" alt="Ranjesh Kumar Roy" class="phd-card-photo"
+                            style="object-position: center 20%;"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>RR</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Ranjesh Kumar Roy</h4>
+                        <p class="phd-card-area">Designing quantum-resistant cryptographic protocols</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2025</span>
+                            <span class="phd-card-college">🏛️ IIT Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 10 — Tarani Das -->
+                <div class="phd-card" data-status="pursuing">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/tarani.jpg" alt="Tarani Das" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>TD</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <h4 class="phd-card-name">Tarani Das</h4>
+                        <p class="phd-card-area">Research area to be updated</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2026</span>
+                            <span class="phd-card-college">🏛️ IIT Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- /phd-cards-grid -->
+
+        </div>
+    </section>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Filter logic -->
+    <script>
+    (function () {
+        const filters  = document.querySelectorAll('.phd-filter');
+        const cards    = document.querySelectorAll('#phdGrid .phd-card');
+
+        // Pre-compute counts from the DOM
+        function countByStatus(status) {
+            if (status === 'all') return cards.length;
+            return [...cards].filter(c => c.dataset.status === status).length;
+        }
+
+        // Update the count badges once on load
+        document.getElementById('count-all').textContent      = countByStatus('all');
+        document.getElementById('count-pursuing').textContent = countByStatus('pursuing');
+        document.getElementById('count-awarded').textContent  = countByStatus('awarded');
+
+        // Filter on click
+        filters.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const chosen = this.dataset.filter;
+
+                // Toggle active class
+                filters.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                // Show / hide cards
+                cards.forEach(function (card) {
+                    if (chosen === 'all' || card.dataset.status === chosen) {
+                        card.classList.remove('phd-hidden');
+                    } else {
+                        card.classList.add('phd-hidden');
+                    }
+                });
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

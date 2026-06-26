@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications — Dr. Daya Sagar Gupta</title>
+    <meta name="description" content="Dr. Daya Sagar Gupta — Assistant Professor at IIT Patna specializing in cryptography, cybersecurity, and blockchain technology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="publications">
+
+    <!-- THREE.JS CANVAS -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⬡</span>
+                    Dr. D.S. Gupta
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <!-- Desktop nav only -->
+                <ul class="nav-links-desktop">
+                    <li class="nav-item dropdown">
+                        <a href="research.html" class="nav-link dropdown-toggle nav-link--research">Research ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publications.html" class="dropdown-link">Publications</a></li>
+                            <li><a href="projects.html" class="dropdown-link">Projects</a></li>
+                            <li><a href="students.html" class="dropdown-link">Students</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
+                    <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link nav-link--achievements">Achievements</a></li>
+                    <li><a href="contact.html" class="nav-link nav-link--contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE NAV MENU — body-level so nothing can clip it -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <nav class="mobile-nav-panel" id="mobileNavPanel">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="research.html" class="mobile-nav-link">
+                        <span class="mnav-icon">🔬</span> Research
+                    </a>
+                    <ul class="mobile-nav-sub">
+                        <li><a href="publications.html" class="mobile-nav-sub-link">📄 Publications</a></li>
+                        <li><a href="projects.html"     class="mobile-nav-sub-link">⚗️ Projects</a></li>
+                        <li><a href="students.html"     class="mobile-nav-sub-link">🎓 Scholars</a></li>
+                    </ul>
+                </li>
+                <li><a href="experience.html"   class="mobile-nav-link"><span class="mnav-icon">💼</span> Experience</a></li>
+                <li><a href="education.html"    class="mobile-nav-link"><span class="mnav-icon">📘</span> Education</a></li>
+                <li><a href="achievements.html" class="mobile-nav-link"><span class="mnav-icon">🏆</span> Achievements</a></li>
+                <li><a href="contact.html"      class="mobile-nav-link"><span class="mnav-icon">✉️</span> Contact</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ" target="_blank" class="mnav-social">Scholar</a>
+                <a href="https://orcid.org/0000-0001-5401-7287" target="_blank" class="mnav-social">ORCID</a>
+                <a href="https://www.linkedin.com/in/dr-daya-sagar-gupta-46bb4397/" target="_blank" class="mnav-social">LinkedIn</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" class="page-top-offset section publications-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Publications</h2>
+                <p class="section-subtitle">Journal articles, conference papers, and research contributions</p>
+            </div>
+            <div class="pub-filter-bar">
+                <button class="pub-filter active" data-filter="all">All</button>
+                <button class="pub-filter" data-filter="journal">Journal</button>
+                <button class="pub-filter" data-filter="conference">Conference</button>
+                <button class="pub-filter" data-filter="survey">Survey</button>
+            </div>
+            <div class="publications-list">
+                <article class="pub-card" data-type="journal">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge journal">Journal</span>
+                            <span class="pub-badge peer">Peer-Reviewed</span>
+                        </div>
+                        <h3 class="pub-title">Quantum-Resistant Cryptographic Protocols for Future Internet Security</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, et al.</p>
+                        <p class="pub-venue">Journal of Cryptographic Research · Vol. 45, Issue 3 · pp. 234–256</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="journal">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge journal">Journal</span>
+                            <span class="pub-badge impact">High Impact</span>
+                        </div>
+                        <h3 class="pub-title">Advanced Blockchain Security: Smart Contract Vulnerability Analysis and Mitigation Strategies</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Singh, R., Kumar, A.</p>
+                        <p class="pub-venue">IEEE Transactions on Software Engineering · Vol. 49, Issue 2 · pp. 512–535</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="journal">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge journal">Journal</span>
+                            <span class="pub-badge peer">Peer-Reviewed</span>
+                        </div>
+                        <h3 class="pub-title">Cybersecurity Frameworks for Critical Infrastructure Protection and Resilience</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Verma, S., Sharma, P.</p>
+                        <p class="pub-venue">International Journal of Network Security · Vol. 25, Issue 1 · pp. 78–105</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="conference">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge conference">Conference</span>
+                            <span class="pub-badge peer">Peer-Reviewed</span>
+                        </div>
+                        <h3 class="pub-title">Machine Learning Applications in Intrusion Detection Systems: Performance Evaluation and Optimization</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Patel, M., Desai, N.</p>
+                        <p class="pub-venue">ICCS 2022 · pp. 389–402</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="survey">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge survey">Survey</span>
+                            <span class="pub-badge cited">Highly Cited</span>
+                        </div>
+                        <h3 class="pub-title">Zero-Knowledge Proofs: Applications and Implementation Challenges in Cryptographic Systems</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Khan, F., Nair, V.</p>
+                        <p class="pub-venue">ACM Computing Surveys · Vol. 55, Issue 4 · pp. 67–103</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="journal">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge journal">Journal</span>
+                            <span class="pub-badge peer">Peer-Reviewed</span>
+                        </div>
+                        <h3 class="pub-title">Post-Quantum Cryptography: Algorithm Selection and Implementation Guidelines</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Mishra, R., Tiwari, S.</p>
+                        <p class="pub-venue">IEEE Transactions on Information Forensics and Security · Vol. 18, Issue 3 · pp. 1456–1478</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="journal">
+                    <div class="pub-year">2022</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge journal">Journal</span>
+                            <span class="pub-badge impact">High Impact</span>
+                        </div>
+                        <h3 class="pub-title">Lattice-Based Cryptography: Modern Approaches and Security Analysis</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Verma, N., Bhat, K.</p>
+                        <p class="pub-venue">Journal of Systems and Software · Vol. 192, Issue 2 · pp. 456–481</p>
+                    </div>
+                </article>
+                <article class="pub-card" data-type="journal">
+                    <div class="pub-year">2023</div>
+                    <div class="pub-body">
+                        <div class="pub-badges">
+                            <span class="pub-badge journal">Journal</span>
+                            <span class="pub-badge cited">Highly Cited</span>
+                        </div>
+                        <h3 class="pub-title">Federated Learning for Privacy-Preserving Intrusion Detection in Distributed Networks</h3>
+                        <p class="pub-authors">Dr. Daya Sagar Gupta, Joshi, R., Chowdhury, A.</p>
+                        <p class="pub-venue">Machine Learning and Systems · Vol. 5, Issue 1 · pp. 89–119</p>
+                    </div>
+                </article>
+            </div>
+            <div class="pub-more">
+                <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ&hl=en&oi=ao" target="_blank" class="btn btn-outline">View All on Google Scholar →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
