@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Dr. Daya Sagar Gupta</title>
+    <meta name="description" content="Dr. Daya Sagar Gupta — Assistant Professor at IIT Patna specializing in cryptography, cybersecurity, and blockchain technology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="contact">
+
+    <!-- THREE.JS CANVAS -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⬡</span>
+                    Dr. D.S. Gupta
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <!-- Desktop nav only -->
+                <ul class="nav-links-desktop">
+                    <li class="nav-item dropdown">
+                        <a href="research.html" class="nav-link dropdown-toggle nav-link--research">Research ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publications.html" class="dropdown-link">Publications</a></li>
+                            <li><a href="projects.html" class="dropdown-link">Projects</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="lacs-lab.html" class="nav-link nav-link--lacslab">LACS Lab</a></li>
+                    <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
+                    <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link nav-link--achievements">Achievements</a></li>
+                    <li><a href="contact.html" class="nav-link nav-link--contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE NAV MENU — body-level so nothing can clip it -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <nav class="mobile-nav-panel" id="mobileNavPanel">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="research.html" class="mobile-nav-link">
+                        <span class="mnav-icon">🔬</span> Research
+                    </a>
+                    <ul class="mobile-nav-sub">
+                        <li><a href="publications.html" class="mobile-nav-sub-link">📄 Publications</a></li>
+                        <li><a href="projects.html"     class="mobile-nav-sub-link">⚗️ Projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="lacs-lab.html"     class="mobile-nav-link"><span class="mnav-icon">🧪</span> LACS Lab</a></li>
+                <li><a href="experience.html"   class="mobile-nav-link"><span class="mnav-icon">💼</span> Experience</a></li>
+                <li><a href="education.html"    class="mobile-nav-link"><span class="mnav-icon">📘</span> Education</a></li>
+                
+                <li><a href="contact.html"      class="mobile-nav-link"><span class="mnav-icon">✉️</span> Contact</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ" target="_blank" class="mnav-social">Scholar</a>
+                <a href="https://orcid.org/0000-0001-5401-7287" target="_blank" class="mnav-social">ORCID</a>
+                <a href="https://www.linkedin.com/in/dr-daya-sagar-gupta-46bb4397/" target="_blank" class="mnav-social">LinkedIn</a>
+            </div>
+        </nav>
+    </div>
+
+
+   <!-- CONTACT SECTION -->
+    <section id="contact" class="page-top-offset section contact-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Connect</p>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">For research collaboration, PhD inquiries, or academic opportunities</p>
+            </div>
+            <div class="contact-grid-v2">
+
+                <!-- Email -->
+                <div class="contact-card-v2">
+                    <div class="contact-v2-icon">📧</div>
+                    <p class="contact-v2-label">Email</p>
+                    <a href="mailto:dayasagar@iitp.ac.in" class="contact-v2-val">dayasagar@iitp.ac.in</a>
+                </div>
+
+                <!-- Office -->
+                <div class="contact-card-v2">
+                    <div class="contact-v2-icon">🏛️</div>
+                    <p class="contact-v2-label">Office</p>
+                    <p class="contact-v2-val">Dept. of Mathematics, Block-1, Room 506<br>IIT Patna, Bihta, Bihar – 801106</p>
+                </div>
+
+                <!-- Online Profiles -->
+                <div class="contact-card-v2">
+                    <div class="contact-v2-icon">🌐</div>
+                    <p class="contact-v2-label">Online Profiles</p>
+                    <div class="contact-v2-links">
+                        <a href="https://in.linkedin.com/in/dr-daya-sagar-gupta-46bb4397" target="_blank" class="cv2-link cv2-link--linkedin">LinkedIn</a>
+                        <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ&hl=en&oi=ao" target="_blank" class="cv2-link cv2-link--scholar">Google Scholar</a>
+                        <a href="https://www.researchgate.net/profile/Daya-Sagar-Gupta" target="_blank" class="cv2-link cv2-link--rg">ResearchGate</a>
+                        <a href="https://orcid.org/0000-0001-5401-7287" target="_blank" class="cv2-link cv2-link--orcid">ORCID</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

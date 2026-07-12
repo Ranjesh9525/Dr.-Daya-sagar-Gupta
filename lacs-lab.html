@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LACS Lab — Dr. Daya Sagar Gupta</title>
+    <meta name="description" content="LACS Lab, IIT Patna — Laboratory for Advanced Cryptography & Security led by Dr. Daya Sagar Gupta, specializing in cryptography, cybersecurity, and blockchain technology">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Lab Head card ── */
+        .lab-head-card {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px;
+            margin-top: 8px;
+            box-shadow: 0 2px 12px rgba(37,99,235,0.06);
+        }
+        .lab-head-photo-wrap { flex-shrink: 0; }
+        .lab-head-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            background: #f3f4f6;
+            display: block;
+        }
+        .lab-head-photo-fallback {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0e7ff 0%, #dbeafe 100%);
+            border: 3px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-weight: 700;
+            font-size: 15px;
+            color: var(--blue);
+        }
+        .lab-head-tag {
+            display: inline-block;
+            font-family: var(--font-display);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 20px;
+            padding: 3px 12px;
+            margin-bottom: 8px;
+        }
+        .lab-head-name {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 2px;
+        }
+        .lab-head-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .lab-head-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            max-width: 640px;
+        }
+        .lab-head-links { display: flex; gap: 10px; flex-wrap: wrap; }
+
+        @media (max-width: 600px) {
+            .lab-head-card { flex-direction: column; text-align: center; padding: 24px 20px; }
+            .lab-head-links { justify-content: center; }
+        }
+
+        /* ── About section ── */
+        .lab-about {
+            margin-top: 48px;
+        }
+        .lab-about-title {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 14px;
+        }
+        .lab-about-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+            max-width: 820px;
+            margin-bottom: 24px;
+        }
+        .lab-focus-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .lab-focus-item {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 18px 16px;
+            text-align: center;
+        }
+        .lab-focus-icon { font-size: 26px; margin-bottom: 8px; }
+        .lab-focus-item h4 {
+            font-family: var(--font-display);
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        @media (max-width: 900px) { .lab-focus-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .lab-focus-grid { grid-template-columns: 1fr; } }
+
+        /* ── Students header ── */
+        .lab-students-header {
+            margin-top: 56px;
+            margin-bottom: 8px;
+        }
+        .lab-students-header h3 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+        .lab-students-header p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ── Degree filter bar (reuses pub-filter-bar pattern) ── */
+        .phd-filter-bar {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin: 28px 0 8px;
+            flex-wrap: wrap;
+        }
+        .phd-filter {
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-family: var(--font-display);
+            font-size: 12.5px;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: #ffffff;
+            color: var(--text-muted);
+            transition: all 0.25s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .phd-filter:hover  { color: var(--text); border-color: var(--blue); }
+        .phd-filter.active {
+            background: var(--blue);
+            border-color: var(--blue);
+            color: #ffffff;
+        }
+        .phd-filter-count {
+            font-size: 11px;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.25);
+            color: inherit;
+            min-width: 22px;
+            text-align: center;
+        }
+        .phd-filter:not(.active) .phd-filter-count {
+            background: var(--border);
+            color: var(--text-muted);
+        }
+
+        /* Degree badge (top-left ribbon on card) */
+        .phd-card-degree {
+            align-self: flex-start;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 2px 9px;
+            border-radius: 20px;
+            margin-bottom: 2px;
+        }
+        .phd-card-degree.phd    { background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
+        .phd-card-degree.mtech  { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+        .phd-card-degree.btech  { background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+
+        /* Hidden card state */
+        .phd-card.phd-hidden { display: none; }
+        .phd-card {
+            transition: transform 0.22s var(--ease-smooth, cubic-bezier(.4,0,.2,1)),
+                        box-shadow 0.22s var(--ease-smooth, cubic-bezier(.4,0,.2,1)),
+                        opacity 0.2s ease;
+        }
+
+        /* Empty state when a category has no members yet */
+        .lab-empty-state {
+            display: none;
+            text-align: center;
+            padding: 48px 20px;
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            margin-top: 40px;
+        }
+        .lab-empty-state.show { display: block; }
+    </style>
+</head>
+<body data-page="lacs-lab">
+
+    <!-- THREE.JS CANVAS -->
+    <canvas id="hero-canvas"></canvas>
+
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">⬡</span>
+                    Dr. D.S. Gupta
+                </a>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+                <!-- Desktop nav only -->
+                <ul class="nav-links-desktop">
+                    <li class="nav-item dropdown">
+                        <a href="research.html" class="nav-link dropdown-toggle nav-link--research">Research ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="publications.html" class="dropdown-link">Publications</a></li>
+                            <li><a href="projects.html" class="dropdown-link">Projects</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="lacs-lab.html" class="nav-link nav-link--lacslab">LACS Lab</a></li>
+                    <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
+                    <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
+                    <li><a href="achievements.html" class="nav-link nav-link--achievements">Achievements</a></li>
+                    <li><a href="contact.html" class="nav-link nav-link--contact">Contact</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- MOBILE NAV MENU — body-level so nothing can clip it -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay" aria-hidden="true">
+        <nav class="mobile-nav-panel" id="mobileNavPanel">
+            <ul class="mobile-nav-list">
+                <li class="mobile-nav-item">
+                    <a href="research.html" class="mobile-nav-link">
+                        <span class="mnav-icon">🔬</span> Research
+                    </a>
+                    <ul class="mobile-nav-sub">
+                        <li><a href="publications.html" class="mobile-nav-sub-link">📄 Publications</a></li>
+                        <li><a href="projects.html"     class="mobile-nav-sub-link">⚗️ Projects</a></li>
+                    </ul>
+                </li>
+                <li><a href="lacs-lab.html"     class="mobile-nav-link"><span class="mnav-icon">🧪</span> LACS Lab</a></li>
+                <li><a href="experience.html"   class="mobile-nav-link"><span class="mnav-icon">💼</span> Experience</a></li>
+                <li><a href="education.html"    class="mobile-nav-link"><span class="mnav-icon">📘</span> Education</a></li>
+                
+                <li><a href="contact.html"      class="mobile-nav-link"><span class="mnav-icon">✉️</span> Contact</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="https://scholar.google.com/citations?user=KLxwmP0AAAAJ" target="_blank" class="mnav-social">Scholar</a>
+                <a href="https://orcid.org/0000-0001-5401-7287" target="_blank" class="mnav-social">ORCID</a>
+                <a href="https://www.linkedin.com/in/dr-daya-sagar-gupta-46bb4397/" target="_blank" class="mnav-social">LinkedIn</a>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- LACS LAB SECTION -->
+    <section id="lacs-lab" class="page-top-offset section lacslab-section">
+        <div class="container">
+
+            <div class="section-header">
+                <p class="section-eyebrow">Laboratory</p>
+                <h2 class="section-title">LACS Lab</h2>
+                <p class="section-subtitle">Laboratory for Advanced Cryptography &amp; Security — IIT Patna</p>
+            </div>
+
+            <!-- LAB HEAD -->
+            <div class="lab-head-card">
+                <div class="lab-head-photo-wrap">
+                    <img src="images/dsg.jpeg" alt="Dr. Daya Sagar Gupta" class="lab-head-photo"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="lab-head-photo-fallback" style="display:none;">DSG</div>
+                </div>
+                <div class="lab-head-info">
+                    <span class="lab-head-tag">Lab Head</span>
+                    <h3 class="lab-head-name">Dr. Daya Sagar Gupta</h3>
+                    <p class="lab-head-role">Assistant Professor, Department of Mathematics · IIT Patna</p>
+                    <p class="lab-head-desc">Founder and head of the LACS Lab, guiding research in post-quantum cryptography, cybersecurity, and blockchain-enabled systems, and mentoring PhD, M.Tech, and B.Tech researchers.</p>
+                    <div class="lab-head-links">
+                        <a href="contact.html" class="btn btn-outline">Contact</a>
+                        <a href="research.html" class="btn btn-outline">Research Areas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ABOUT THE LAB -->
+            <div class="lab-about">
+                <h3 class="lab-about-title">About the Lab</h3>
+                <p class="lab-about-text">
+                    The LACS Lab (Laboratory for Advanced Cryptography &amp; Security) at IIT Patna is a research group dedicated to
+                    building the next generation of secure digital systems. The lab's work spans quantum-resistant cryptographic
+                    protocols, applied cybersecurity, blockchain and smart-contract security, and security for IoT and distributed
+                    networks. Scholars in the lab work on funded and independent projects, publish in leading journals and
+                    conferences, and collaborate with researchers across premier Indian institutions.
+                </p>
+                <div class="lab-focus-grid">
+                    <div class="lab-focus-item">
+                        <div class="lab-focus-icon">🔐</div>
+                        <h4>Cryptography &amp; Blockchain</h4>
+                    </div>
+                    <div class="lab-focus-item">
+                        <div class="lab-focus-icon">🛡️</div>
+                        <h4>Cybersecurity</h4>
+                    </div>
+                    <div class="lab-focus-item">
+                        <div class="lab-focus-icon">⛓️</div>
+                        <h4>Quantum Computing</h4>
+                    </div>
+                    <div class="lab-focus-item">
+                        <div class="lab-focus-icon">🌐</div>
+                        <h4>Internet of Things</h4>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LAB MEMBERS / STUDENTS -->
+            <div class="lab-students-header">
+                <h3>Lab Members</h3>
+                <p>PhD, M.Tech, and B.Tech researchers working under active supervision and mentorship.</p>
+            </div>
+
+            <!-- Degree Filter Bar -->
+            <div class="phd-filter-bar">
+                <button class="phd-filter active" data-filter="all">
+                    All <span class="phd-filter-count" id="count-all">0</span>
+                </button>
+                <button class="phd-filter" data-filter="phd">
+                    PhD <span class="phd-filter-count" id="count-phd">0</span>
+                </button>
+                <button class="phd-filter" data-filter="mtech">
+                    M.Tech <span class="phd-filter-count" id="count-mtech">0</span>
+                </button>
+                <button class="phd-filter" data-filter="btech">
+                    B.Tech <span class="phd-filter-count" id="count-btech">0</span>
+                </button>
+            </div>
+
+            <!-- Lab Member Cards Grid -->
+            <div class="phd-cards-grid" id="labGrid">
+
+                <!-- ============ PhD SCHOLARS ============ -->
+
+                <!-- Hema Shekhawat -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/hema.jpeg" alt="Hema Shekhawat" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>HS</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Dr. Hema Shekhawat</h4>
+                        <p class="phd-card-area">Design of Post-Quantum blockchain-enabled cryptographic security schemes for IoT-powered smart grid networks</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Completed: Dec 2024</span>
+                            <span class="phd-card-college">🏛️ Rajiv Gandhi Institute of Petroleum Technology</span>
+                            <span class="phd-card-badge awarded">PhD Awarded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pooja Verma -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/pooja.jpeg" alt="Pooja Verma" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>PV</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Dr. Pooja Verma</h4>
+                        <p class="phd-card-area">Lattice-based cryptography and post-quantum security protocols</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Completed: June 2026</span>
+                            <span class="phd-card-college">🏛️ RGIPT Amethi</span>
+                            <span class="phd-card-badge awarded">PhD Awarded</span>
+                        </div>
+                    </div>
+                </div>
+
+                 <!-- Card 3 — Lacchita Soni -->
+                <div class="phd-card" data-status="awarded" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/laccshita.jpeg" alt="Lacchita Soni" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>LS</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Dr. Lacchita Soni</h4>
+                        <p class="phd-card-area">Cryptography and Network Security</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Completed: June 2025</span>
+                            <span class="phd-card-college">🏛️ RGIPT Amethi</span>
+                            <span class="phd-card-badge awarded">PhD Awarded</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ayush Thakur -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/ayush.jpeg" alt="Ayush Thakur" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>AT</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Ayush Thakur</h4>
+                        <p class="phd-card-area">Post quantum Cryptography</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2024</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Mandi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Taru Bhatnagar -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/taru.jpeg" alt="Taru Bhatnagar" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>TB</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Taru Bhatnagar</h4>
+                        <p class="phd-card-area">Post Quantum cryptography with PUF</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2023</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Mandi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 — Dilip Kumar -->
+                <div class="phd-card" data-status="pursuing" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/dilip.jpeg" alt="Dilip Kumar" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>DK</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Dilip Kumar</h4>
+                        <p class="phd-card-area">Quantum Cryptography</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: Jan 2024</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Mandi</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Govind Godara -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/govind.jpeg" alt="Govind Godara" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>GG</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Govind Godara</h4>
+                        <p class="phd-card-area">Internet of drones, post quantum cryptography</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: Jan 2025</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tanushree Bhowmick -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/tanushree.jpg" alt="Tanushree Bhowmick" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>TB</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Tanushree Bhowmick</h4>
+                        <p class="phd-card-area">Cybersecurity frameworks for smart grid and critical infrastructure protection</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: Jan 2025</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranjesh Kumar Roy -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/ranjesh.jpeg" alt="Ranjesh Kumar Roy" class="phd-card-photo"
+                            style="object-position: center 20%;"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>RR</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Ranjesh Kumar Roy</h4>
+                        <p class="phd-card-area">Designing quantum-resistant cryptographic protocols</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: 2025</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tarani Das -->
+                <div class="phd-card" data-degree="phd">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/tarani.jpeg" alt="Tarani Das" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>TD</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree phd">PhD</span>
+                        <h4 class="phd-card-name">Tarani Das</h4>
+                        <p class="phd-card-area">Isogeny Based Cryptography</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: Jan 2026</span>
+                            <span class="phd-card-college">🏛️ Indian Institute of Technology, Patna</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--
+                ============ M.TECH STUDENTS ============
+                No M.Tech students listed yet. To add one, copy the block below,
+                fill in the details, and paste it here (before the closing </div> of #labGrid):
+
+                <div class="phd-card" data-degree="mtech">
+                    <div class="phd-card-photo-wrap">
+                        <img src="images/students/PHOTO_FILE.jpg" alt="STUDENT NAME" class="phd-card-photo"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="phd-card-photo-fallback" style="display:none;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                            <span>IN</span>
+                        </div>
+                    </div>
+                    <div class="phd-card-body">
+                        <span class="phd-card-degree mtech">M.Tech</span>
+                        <h4 class="phd-card-name">STUDENT NAME</h4>
+                        <p class="phd-card-area">Project / research area</p>
+                        <div class="phd-card-footer">
+                            <span class="phd-card-year">Joined: YEAR</span>
+                            <span class="phd-card-college">🏛️ Institution Name</span>
+                            <span class="phd-card-badge pursuing">Pursuing</span>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+                <!--
+                ============ B.TECH STUDENTS ============
+                No B.Tech students listed yet. Use the same card format as above,
+                with data-degree="btech" and <span class="phd-card-degree btech">B.Tech</span>.
+                -->
+
+            </div><!-- /labGrid -->
+
+            <!-- Shown when a filtered category currently has no members -->
+            <div class="lab-empty-state" id="labEmptyState">
+                No lab members listed in this category yet. Check back soon.
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Three.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js"></script>
+
+    <!-- Filter logic -->
+    <script>
+    (function () {
+        const filters = document.querySelectorAll('.phd-filter');
+        const cards   = document.querySelectorAll('#labGrid .phd-card');
+        const empty   = document.getElementById('labEmptyState');
+
+        function countByDegree(degree) {
+            if (degree === 'all') return cards.length;
+            return [...cards].filter(c => c.dataset.degree === degree).length;
+        }
+
+        document.getElementById('count-all').textContent   = countByDegree('all');
+        document.getElementById('count-phd').textContent   = countByDegree('phd');
+        document.getElementById('count-mtech').textContent = countByDegree('mtech');
+        document.getElementById('count-btech').textContent = countByDegree('btech');
+
+        filters.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                const chosen = this.dataset.filter;
+
+                filters.forEach(function (b) { b.classList.remove('active'); });
+                this.classList.add('active');
+
+                let visibleCount = 0;
+                cards.forEach(function (card) {
+                    if (chosen === 'all' || card.dataset.degree === chosen) {
+                        card.classList.remove('phd-hidden');
+                        visibleCount++;
+                    } else {
+                        card.classList.add('phd-hidden');
+                    }
+                });
+
+                empty.classList.toggle('show', visibleCount === 0);
+            });
+        });
+    })();
+    </script>
+</body>
+</html>
