@@ -2912,7 +2912,7 @@ a.contact-v2-val:hover { color: var(--cyan); }
 .edu-clean-degree {
     font-family: var(--font-display);
     font-size: 1.55rem;
-    font-weight: 800;
+    font-weight: 600;
     color: var(--text);
     letter-spacing: -0.03em;
     line-height: 1;
