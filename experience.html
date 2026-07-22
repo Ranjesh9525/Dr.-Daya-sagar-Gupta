@@ -10,15 +10,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Earlier Positions — same .exp-card look, 3-per-row grid */
-        .exp-cards-grid {
+        /* Experience — two-row grid, most recent first */
+        .exp-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 24px;
-            margin-top: 12px;
+            margin-top: 40px;
         }
-        @media (max-width: 900px) { .exp-cards-grid { grid-template-columns: 1fr 1fr; } }
-        @media (max-width: 600px) { .exp-cards-grid { grid-template-columns: 1fr; } }
+        .exp-grid .exp-card { width: 100%; text-align: left; }
+        .exp-grid .exp-role,
+        .exp-grid .exp-org,
+        .exp-grid .exp-dates,
+        .exp-grid .exp-desc { text-align: left; }
+        .exp-grid .exp-tags { justify-content: flex-start; }
+        @media (max-width: 900px) { .exp-grid { grid-template-columns: 1fr 1fr; } }
+        @media (max-width: 600px) { .exp-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body data-page="experience">
@@ -51,7 +57,7 @@
                     <li><a href="lacs-lab.html" class="nav-link nav-link--lacslab">LACS Lab</a></li>
                     <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
                     <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
-                   
+ 
                     <li><a href="contact.html" class="nav-link nav-link--contact">Contact</a></li>
                 </ul>
             </div>
@@ -93,85 +99,62 @@
                 <h2 class="section-title">Professional Experience</h2>
                 <p class="section-subtitle">Academic roles at premier Indian institutions</p>
             </div>
-            <div class="exp-zigzag">
+            <div class="exp-grid">
 
-                <!-- Item 1 — card above the line -->
-                <div class="exp-col exp-col--above">
-                    <div class="exp-card exp-card--active">
-                        <div class="exp-period exp-period--active">Present</div>
-                        <h3 class="exp-role">Assistant Professor</h3>
-                        <p class="exp-org">Indian Institute of Technology Patna</p>
-                        <p class="exp-dates">June 2024 – Present</p>
-                        <p class="exp-desc">Leading cryptography research, supervising PhD scholars, and advancing research excellence in the Department of Mathematics.</p>
-                        <div class="exp-tags"><span>Cryptography</span><span>Research</span><span>Mentorship</span></div>
-                    </div>
-                    <div class="exp-stem exp-stem--down"></div>
-                    <div class="exp-node exp-node--active"></div>
+                <!-- Row 1 -->
+                <div class="exp-card exp-card--active">
+                    <div class="exp-period exp-period--active">Present</div>
+                    <h3 class="exp-role">Assistant Professor</h3>
+                    <p class="exp-org">Indian Institute of Technology Patna</p>
+                    <p class="exp-dates">Jun 2024 – Present</p>
+                    <p class="exp-desc">Leading cryptography research, supervising PhD scholars, and advancing research excellence in the Department of Mathematics.</p>
+                    <div class="exp-tags"><span>Cryptography</span><span>Research</span><span>Mentorship</span></div>
                 </div>
 
-                <!-- Zigzag connector 1→2 -->
-                <div class="exp-zz exp-zz--down-up"></div>
-
-                <!-- Item 2 — card below the line -->
-                <div class="exp-col exp-col--below">
-                    <div class="exp-node"></div>
-                    <div class="exp-stem exp-stem--up"></div>
-                    <div class="exp-card">
-                        <div class="exp-period">2023–2024</div>
-                        <h3 class="exp-role">Assistant Professor</h3>
-                        <p class="exp-org">Indian Institute of Technology Mandi</p>
-                        <p class="exp-dates">May 2023 – June 2024</p>
-                        <p class="exp-desc">Conducted advanced research in post-quantum cryptography, contributed to institutional research excellence and student mentorship.</p>
-                        <div class="exp-tags"><span>Post-Quantum</span><span>Teaching</span></div>
-                    </div>
-                </div>
-
-                <!-- Zigzag connector 2→3 -->
-                <div class="exp-zz exp-zz--up-down"></div>
-
-                <!-- Item 3 — card above the line -->
-                <div class="exp-col exp-col--above">
-                    <div class="exp-card">
-                        <div class="exp-period">2021–2023</div>
-                        <h3 class="exp-role">Assistant Professor</h3>
-                        <p class="exp-org">Rajiv Gandhi Institute of Petroleum Technology (RGIPT)</p>
-                        <p class="exp-dates">April 2021 – May 2023</p>
-                        <p class="exp-desc">Developed cryptography curriculum, established international research collaborations, and guided student research projects including funded IoT security project.</p>
-                        <div class="exp-tags"><span>Curriculum</span><span>IoT Security</span><span>Funded Project</span></div>
-                    </div>
-                    <div class="exp-stem exp-stem--down"></div>
-                    <div class="exp-node"></div>
-                </div>
-
-            </div>
-
-            <!-- EARLIER POSITIONS — same exp-card format as timeline above, 3 per row -->
-            <div class="section-header" style="margin-top: 64px;">
-                
-                <h2 class="section-title">Earlier Positions</h2>
-                <p class="section-subtitle">Prior academic appointments as Assistant Professor</p>
-            </div>
-            <div class="exp-cards-grid">
-
-                <!-- SLIET Longowal -->
                 <div class="exp-card">
-                    <div class="exp-period">10th December 2020 to 07th April 2021</div>
-                    <h3 class="exp-role">Sant Longowal Institute of Engineering &amp; Technology Longowal, Punjab</h3>
-                    <p class="exp-desc">Worked as Assistant Professor</p>
+                    <div class="exp-period">2023–2024</div>
+                    <h3 class="exp-role">Assistant Professor</h3>
+                    <p class="exp-org">Indian Institute of Technology Mandi</p>
+                    <p class="exp-dates">May 2023 – Jun 2024</p>
+                    <p class="exp-desc">Conducted advanced research in post-quantum cryptography, contributed to institutional research excellence and student mentorship.</p>
+                    <div class="exp-tags"><span>Post-Quantum</span><span>Teaching</span></div>
                 </div>
 
-                <!-- Shershah Engineering College -->
                 <div class="exp-card">
-                    <div class="exp-period">26th June 2018 to 07th December 2020</div>
-                    <h3 class="exp-role">Shershah Engineering College Sasaram, Bihar under Govt. of Bihar</h3>
-                    <p class="exp-desc">Worked as Assistant Professor</p>
+                    <div class="exp-period">2021–2023</div>
+                    <h3 class="exp-role">Assistant Professor</h3>
+                    <p class="exp-org">Rajiv Gandhi Institute of Petroleum Technology (RGIPT)</p>
+                    <p class="exp-dates">Apr 2021 – May 2023</p>
+                    <p class="exp-desc">Developed cryptography curriculum, established international research collaborations, and guided student research projects including funded IoT security project.</p>
+                    <div class="exp-tags"><span>Curriculum</span><span>IoT Security</span><span>Funded Project</span></div>
                 </div>
 
-                <!-- Loknayak Jai Prakash Institute of Technology -->
+                <!-- Row 2 -->
                 <div class="exp-card">
-                    <div class="exp-period">2nd January 2018 to 25th June 2018</div>
-                    <h3 class="exp-role">Loknayak Jai Prakash Institute of Technology Chapra, Bihar</h3>
-                    <p class="exp-desc">Worked as Assistant Professor</p>
+                    <div class="exp-period">2020–2021</div>
+                    <h3 class="exp-role">Assistant Professor</h3>
+                    <p class="exp-org">Sant Longowal Institute of Engineering &amp; Technology, Longowal, Punjab</p>
+                    <p class="exp-dates">Dec 2020 – Apr 2021</p>
+                    <p class="exp-desc">Taught undergraduate courses and contributed to departmental academic activities.</p>
+                    <div class="exp-tags"><span>Teaching</span></div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-period">2018–2020</div>
+                    <h3 class="exp-role">Assistant Professor</h3>
+                    <p class="exp-org">Shershah Engineering College, Sasaram, Bihar (Govt. of Bihar)</p>
+                    <p class="exp-dates">Jun 2018 – Dec 2020</p>
+                    <p class="exp-desc">Taught undergraduate courses and contributed to departmental academic activities.</p>
+                    <div class="exp-tags"><span>Teaching</span></div>
+                </div>
+
+                <div class="exp-card">
+                    <div class="exp-period">2018</div>
+                    <h3 class="exp-role">Assistant Professor</h3>
+                    <p class="exp-org">Loknayak Jai Prakash Institute of Technology, Chapra, Bihar</p>
+                    <p class="exp-dates">Jan 2018 – Jun 2018</p>
+                    <p class="exp-desc">Taught undergraduate courses and contributed to departmental academic activities.</p>
+                    <div class="exp-tags"><span>Teaching</span></div>
                 </div>
 
             </div>
