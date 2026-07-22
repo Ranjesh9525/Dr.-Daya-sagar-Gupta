@@ -1196,6 +1196,25 @@ img { max-width: 100%; display: block; }
 .pub-badge.peer       { background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); color: var(--muted); }
 .pub-badge.impact     { background: rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.3); color: #fca5a5; }
 .pub-badge.cited      { background: rgba(168,85,247,0.12); border:1px solid rgba(168,85,247,0.3); color: #c4b5fd; }
+.pub-badge.chapter    { background: rgba(20,184,166,0.12); border:1px solid rgba(20,184,166,0.3); color: #5eead4; }
+
+.pub-group-heading {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin: 36px 0 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    font-family: var(--font-display, inherit);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text);
+}
+.pub-group-heading:first-child { margin-top: 0; }
+.pub-group-heading.hidden { display: none; }
+.pub-group-count { font-weight: 400; text-transform: none; letter-spacing: normal; color: var(--muted); font-size: 13px; }
 
 .pub-title {
     font-family: var(--font-display);
