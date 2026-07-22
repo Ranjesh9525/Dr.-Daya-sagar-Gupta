@@ -162,7 +162,7 @@ document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
    PUBLICATION FILTER
    ----------------------------------------------- */
 const filterBtns = document.querySelectorAll('.pub-filter');
-const pubCards   = document.querySelectorAll('.pub-card');
+const pubCards   = document.querySelectorAll('.pub-card, .pub-group-heading');
 
 filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
