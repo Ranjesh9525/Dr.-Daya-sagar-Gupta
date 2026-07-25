@@ -251,7 +251,14 @@
                             <li><a href="projects.html" class="dropdown-link">Projects</a></li>
                         </ul>
                     </li>
-                    <li><a href="lacs-lab.html" class="nav-link nav-link--lacslab">LACS Lab</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="lacs-lab.html" class="nav-link dropdown-toggle nav-link--lacslab">LACS Lab ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="lacs-lab.html#about" class="dropdown-link">About</a></li>
+                            <li><a href="lacs-lab.html#lab-head" class="dropdown-link">Lab Head</a></li>
+                            <li><a href="lacs-lab.html#students" class="dropdown-link">Students</a></li>
+                        </ul>
+                    </li>
                     <li><a href="experience.html" class="nav-link nav-link--experience">Experience</a></li>
                     <li><a href="education.html" class="nav-link nav-link--education">Education</a></li>
                     
@@ -274,7 +281,14 @@
                         <li><a href="projects.html"     class="mobile-nav-sub-link">⚗️ Projects</a></li>
                     </ul>
                 </li>
-                <li><a href="lacs-lab.html"     class="mobile-nav-link"><span class="mnav-icon">🧪</span> LACS Lab</a></li>
+                <li class="mobile-nav-item">
+                    <a href="lacs-lab.html" class="mobile-nav-link"><span class="mnav-icon">🧪</span> LACS Lab</a>
+                    <ul class="mobile-nav-sub">
+                        <li><a href="lacs-lab.html#about" class="mobile-nav-sub-link">ℹ️ About</a></li>
+                        <li><a href="lacs-lab.html#lab-head" class="mobile-nav-sub-link">👤 Lab Head</a></li>
+                        <li><a href="lacs-lab.html#students" class="mobile-nav-sub-link">🎓 Students</a></li>
+                    </ul>
+                </li>
                 <li><a href="experience.html"   class="mobile-nav-link"><span class="mnav-icon">💼</span> Experience</a></li>
                 <li><a href="education.html"    class="mobile-nav-link"><span class="mnav-icon">📘</span> Education</a></li>
                 
@@ -300,7 +314,7 @@
             </div>
 
             <!-- LAB HEAD -->
-            <div class="lab-head-card">
+            <div class="lab-head-card" id="lab-head">
                 <div class="lab-head-photo-wrap">
                     <img src="images/dsg.jpeg" alt="Dr. Daya Sagar Gupta" class="lab-head-photo"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -319,7 +333,7 @@
             </div>
 
             <!-- ABOUT THE LAB -->
-            <div class="lab-about">
+            <div class="lab-about" id="about">
                 <h3 class="lab-about-title">About the Lab</h3>
                 <p class="lab-about-text">
                     The LACS Lab (Laboratory for Advanced Cryptography &amp; Security) at IIT Patna is a research group dedicated to
@@ -349,7 +363,7 @@
             </div>
 
             <!-- LAB MEMBERS / STUDENTS -->
-            <div class="lab-students-header">
+            <div class="lab-students-header" id="students">
                 <h3>Lab Members</h3>
                 <p>PhD, M.Tech, and B.Tech researchers working under active supervision and mentorship.</p>
             </div>
@@ -599,7 +613,7 @@
 
                 <div class="phd-card" data-degree="phd">
                     <div class="phd-card-photo-wrap">
-                        <img src="images/students/antra.png" alt="Antra Sinha" class="phd-card-photo"
+                        <img src="images/students/antra.jpeg" alt="Antra Sinha" class="phd-card-photo"
                             style="object-position: center 20%;"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                         <div class="phd-card-photo-fallback" style="display:none;">
