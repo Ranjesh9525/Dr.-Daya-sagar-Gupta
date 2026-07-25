@@ -79,15 +79,51 @@ document.addEventListener('keydown', (e) => {
 
 /* -----------------------------------------------
    SMOOTH SCROLL
+   (handles plain "#id" links AND cross-page links
+   like "lacs-lab.html#about" clicked from any page,
+   e.g. the LACS Lab navbar dropdown: About / Lab Head / Students)
    ----------------------------------------------- */
+function scrollToHashTarget(hash) {
+    if (!hash || hash === '#') return;
+    const target = document.querySelector(hash);
+    if (target) {
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+    }
+}
+
 document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
         e.preventDefault();
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-            window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-        }
+        scrollToHashTarget(a.getAttribute('href'));
     });
+});
+
+// Links that point to a hash on THIS same page but are written with the
+// filename prefixed (e.g. href="lacs-lab.html#about" while already on
+// lacs-lab.html) — scroll smoothly instead of an instant jump.
+document.querySelectorAll('a[href*="#"]:not([href^="#"])').forEach(a => {
+    a.addEventListener('click', e => {
+        const href = a.getAttribute('href');
+        const [hrefFile, hrefHash] = href.split('#');
+        if (!hrefHash) return;
+        const currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        if (hrefFile === currentFile) {
+            e.preventDefault();
+            scrollToHashTarget('#' + hrefHash);
+            history.pushState(null, '', '#' + hrefHash);
+        }
+        // otherwise: different page — let the browser navigate normally;
+        // the hash is picked up and smooth-scrolled on load below.
+    });
+});
+
+// Landing on a page that already has a hash in the URL (e.g. navigated
+// here from another page's dropdown link) — scroll to it smoothly
+// once everything has laid out, accounting for the fixed header.
+window.addEventListener('load', () => {
+    if (window.location.hash) {
+        setTimeout(() => scrollToHashTarget(window.location.hash), 150);
+    }
 });
 
 
